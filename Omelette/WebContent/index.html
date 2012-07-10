@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="jQuery Tabs, Tabs Widget, TabView, jqxTabs" />
+    <meta name="description" content="The jqxTabs is breaking the content into multiple sections. You
+        can populate it from 'UL' for the tab titles and 'DIV' for it's contents." />
+    <title> Apple Sales Data</title>
+    <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="scripts/gettheme.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.7.js"></script>
+    <script type="text/javascript" src="scripts/jqxcore.js"></script>
+    <script type="text/javascript" src="scripts/jqxtabs.js"></script>
+    <script type="text/javascript" src="scripts/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="scripts/jqxdata.js"></script>
+    <script type="text/javascript" src="scripts/jqxchart.js"></script>
+    <script type="text/javascript" src="scripts/columnChartSetting.js"></script>
+	<script type="text/javascript" src="scripts/lineChartSetting.js"></script>
+    <script type="text/javascript" src="scripts/pieChartSetting.js"></script>
+    <script type="text/javascript" src="mockData/AppleSales.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function () {
+        	var datas = [
+        	                { "product": "iPhone", "year2010": " $10000", "year2011": " $16000", "year2012": "$18000" },
+        	                { "product": "iPad", "year2010": " $5000", "year2011": " $18000", "year2012": "$30000" },
+        	                { "product": "iPod", "year2010": " $6000", "year2011": " $9000", "year2012": "$4000" },
+        	                { "product": "Macbooks", "year2010": " $26000", "year2011": " $29000", "year2012": "$44000" },
+        	                { "product": "iTunes", "year2010": " $2000", "year2011": " $5000", "year2012": "$9000" },
+        	                { "product": "iSoftware", "year2010": " $26000", "year2011": " $29000", "year2012": "$38000" },
+        	                { "product": "iPeripherals", "year2010": " $18000", "year2011": " $26000", "year2012": "$42000" }
+        	            ];
+        	
+            var theme = '';
+
+            // Create jqxTabs.
+            $('#jqxTabs').jqxTabs({ width: 780, height: 800, position: 'top', theme: theme });
+            $('#settings div').css('margin-top', '10px');
+            $('#animation').jqxCheckBox({ theme: theme });
+            $('#contentAnimation').jqxCheckBox({ theme: theme });
+
+            $('#animation').bind('change', function (event) {
+                var checked = event.args.checked;
+                $('#jqxTabs').jqxTabs({ selectionTracker: checked });
+            });
+           
+            $('#contentAnimation').bind('change', function (event) {
+                var checked = event.args.checked;
+                if (checked) {
+                    $('#jqxTabs').jqxTabs({ animationType: 'fade' });
+                }
+                else {
+                    $('#jqxTabs').jqxTabs({ animationType: 'none' });
+                }
+            });
+            
+            var url='mockData/AppleSales.json';
+			var table = $('<table border=1><tr><th colspan="1">Apple Products</th><th colspan="1">Revenue in millions (2010)</th><th colspan="1">Revenue in millions (2011)</th><th colspan="1">Revenue in millions (2012)</th></tr></table>').appendTo($('#somediv'));
+			$.getJSON(url, function(json){	
+				$(json).each(function(i, salesData) {
+					$.each(salesData.AppleSalesData, function(index) {
+						$('<tr/>').appendTo(table)
+						.append($('<td/>').text(this.product))
+						.append($('<td/>').text(this.year2010))
+						.append($('<td/>').text(this.year2011))
+						.append($('<td/>').text(this.year2012));
+					});
+				});
+			});	    
+        });
+    </script>
+</head>
+<body class='default'>
+    <div id='jqxWidget'>
+        <div id='jqxTabs'>
+            <ul>
+                <li style="margin-left: 30px;">Intro</li>
+                <li>Sales Data</li>
+                <li>Column Chart</li>
+                <li>Line Chart</li>
+                <li>Pie Chart</li>
+            </ul>
+            <div style="margin-top: 30px; margin-left: 30px; margin-right: 30px;">
+                This is a representation of Apple's sales data. In the second tab you'll see alle data in a table.
+				In the third tab you'll see the data presented in a Column. The fourth wil present the data in 
+				a line chart en the last will show the data in a pie chart.
+            </div>
+            <div>
+                <div id="somediv" style="margin-top:30px; margin-left:30px"></div>
+            </div>
+            <div>			
+				 	<div style='height:80%; width:80%;'>
+						<div id='host1' style="margin: 0 auto; width:680px; height:400px;">
+							<div id='jqxChart1' style="width:90%; height:90%; position: relative; left: 0px; top: 0px;">
+							</div>
+						</div>
+					</div> 
+            </div>
+            <div>
+                <div>
+<!--                 	<div id='host2' style="margin: 0 auto; width: 680px; height: 400"></div> -->
+                	<div id='jqxChart2' style="width:750px; height:500px; position: relative; left: 0px; top: 0px;">
+                	</div>
+                </div>
+            </div>
+            <div>
+               		<div id='host3' style="margin: 0 auto; width: 699px; height: 400px;">
+        				<div id='jqxChart3' style="width: 680px; height: 400px; position: relative; left: 0px; top: 0px;">
+        				</div>
+   					</div>
+            </div>       
+        </div>
+        
+        <div id='settings'>
+            <div id='animation'>
+                Enable Select Animation</div>
+             <div id='contentAnimation'>
+                Enable Content Animation</div>
+        </div>
+    </div>
+</body>
+</html>

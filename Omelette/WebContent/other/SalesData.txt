@@ -1,0 +1,7 @@
+iPhone, 18000
+iPad, 30000
+iPod, 4000
+Macbooks, 44000
+iTunes, 9000
+iSoftware, 38000
+iPeripherals, 42000
