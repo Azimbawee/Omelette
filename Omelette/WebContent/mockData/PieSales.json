@@ -1,0 +1,27 @@
+[{
+ "id": "1",
+ "name": "iPhone",
+ "amount": "18000"
+ }, {
+ "id": 2,
+ "name": "iPad",
+ "amount": "30000"
+}, {
+ "id": "3",
+  "name": "iPod",
+ "amount": "4000"
+}, {
+ "id": "4",
+  "name": "Macbook",
+ "amount": "44000"
+}, {
+ "id": "5",
+  "name": "iTunes",
+ "amount": "9000"
+}, {
+ "name": "iSoftware",
+ "amount": "38000"
+}, {
+  "name": "iPeripherals",
+ "amount": "42000"
+}]

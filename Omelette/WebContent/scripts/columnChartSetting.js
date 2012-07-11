@@ -2,14 +2,12 @@
  * 
  */
  $(document).ready(function () {
-			
-            var url = "mockData/Sales.json";
+            var url = "mockData/ColumnSales.json";
             
             var source =
             	{
             		datatype: "json",
             		datafields: [
-            		     { name: 'name'},
             		     { name: '2010'},
             		     { name: '2011'},
             		     { name: '2012'},
@@ -52,7 +50,7 @@
                                 axisSize: 'auto',
                                 tickMarksColor: '#888888'
                             },
-                            series: [
+                            series: [ 
                                     { dataField: '2010', displayText: '2010'},
                                     { dataField: '2011', displayText: '2011'},
                                     { dataField: '2012', displayText: '2012'}

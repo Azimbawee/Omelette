@@ -3,27 +3,16 @@
  */
 $(document).ready(function () {
             // prepare chart data as an array
-	
-			var  salesData = [
-	                    { "Product":"iPhone", "Sales": "18000"},
-	                    { "Product":"iPad", "Sales": "30000"},
-	                    { "Product":"iPod", "Sales": "4000"},
-	                    { "Product":"Macbook", "Sales": "44000"},
-	                    { "Product":"iTunes", "Sales": "9000"},
-	                    { "Product":"iSoftware", "Sales": "38000"},
-	                    { "Product":"iPeripherals", "Sales":"42000"}
-	                ];
-			
 			var settings1 = {title: "Apple Sales data"};
 			
             var source =
             {
-                datatype: "csv",
+                datatype: "json",
                 datafields: [
-                    { name: 'Product' },
-                    { name: 'Sales' }
+                    { name: 'name' },
+                    { name: 'amount' }
                 ],
-                url: 'other/SalesData.txt'
+                url: 'mockData/PieSales.json'
             };
 
             var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error); } });
@@ -37,7 +26,7 @@ $(document).ready(function () {
                 legendPosition: { left: 520, top: 140, width: 100, height: 100 },
                 padding: { left: 5, top: 5, right: 5, bottom: 5 },
                 titlePadding: { left: 0, top: 0, right: 0, bottom: 10 },
-                source: salesData,
+                source: dataAdapter,
                 colorScheme: 'scheme02',
                 seriesGroups:
                     [
@@ -47,8 +36,8 @@ $(document).ready(function () {
                             series:
                                 [
                                     { 
-                                        dataField: 'Sales',
-                                        displayText: 'Product',
+                                        dataField: 'amount',
+                                        displayText: 'name',
                                         labelRadius: 100,
                                         initialAngle: 15,
                                         radius: 130,
