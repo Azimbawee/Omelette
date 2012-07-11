@@ -1,6 +1,4 @@
-{
- "AppleSalesData": 
- [
+[
 	{ "product": "iPhone", "year2010": " 10000", "year2011": " 16000", "year2012": "18000" },
 	{ "product": "iPad", "year2010": " 5000", "year2011": " 18000", "year2012": "30000" },
 	{ "product": "iPod", "year2010": " 6000", "year2011": " 9000", "year2012": "4000" },
@@ -9,4 +7,3 @@
 	{ "product": "iSoftware", "year2010": " 26000", "year2011": " 29000", "year2012": "38000" },
 	{ "product": "iPeripherals", "year2010": " 18000", "year2011": " 26000", "year2012": "42000" }
  ]
-}

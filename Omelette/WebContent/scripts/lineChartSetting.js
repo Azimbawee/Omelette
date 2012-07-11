@@ -17,6 +17,8 @@
   	                { "Date": "12/1/2012", "iPhone": "18000", "iPad": "30000", "iPod": "4000", "Macbook": "44000", "iTunes": "9000", "iSoftware": "38000", "iPeripherals":"42000"}
   	            ];
     	 
+    	 var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error);} });
+    	 
             // prepare the data
             var source =
             {
