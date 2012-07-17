@@ -7,12 +7,11 @@
             var source =
             	{
             		datatype: "json",
-            		datafields: [
+            		datafields: [        
             		     { name: '2010'},
             		     { name: '2011'},
             		     { name: '2012'},
             		    ],
-            		    id: 'id',
             		    url: url
             	};
             
